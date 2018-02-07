@@ -1,3 +1,9 @@
 ul {
   list-style: none;
 }
+.close-icon {
+  cursor: pointer;
+}
+.errorText {
+  color: red;
+}

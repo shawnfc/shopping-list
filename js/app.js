@@ -1,12 +1,27 @@
-var app = angular.module('myApp', [])
+var app = angular.module('myShoppingList', [])
+
     .controller('myCtrl', function ($scope) {
-        $scope.products = [
-            'item1',
-            'item2',
-            'item3'
-        ];
-        $scope.addItem = function(){
+        $scope.products = [];
+
+        // Add an item
+        $scope.addItem = function () {
+            // Error text
+            $scope.errorText = "";
+
+            if (!$scope.addMe) {
+                return
+            }
+
+            if ($scope.products.indexOf($scope.addMe) == -1) {
                 $scope.products.push($scope.addMe);
-                $scope.addMe = '';
+            } else {
+                $scope.errorText = "The item is already in your list";
+            }
+        };
+
+        // Remove an item
+        $scope.removeItem = function (x) {
+            $scope.errorText = '';
+            $scope.products.splice(x, 1);
         }
     });
